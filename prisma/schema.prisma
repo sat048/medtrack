@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SymptomLog {
+  id            String   @id @default(uuid())
+  userId        String   // Clerk user ID
+  symptomType   String
+  severity      Int      // 1-10
+  notes         String?  @db.Text
+  temperature   Float?
+  humidity      Float?
+  weatherCode   Int?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+
+
