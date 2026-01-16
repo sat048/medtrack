@@ -8,22 +8,29 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  const { userId } = await auth();
-  
-  // If user is not signed in and trying to access a protected route, redirect to sign-in
-  if (!userId && !isPublicRoute(req)) {
-    const signInUrl = new URL("/sign-in", req.url);
-    return NextResponse.redirect(signInUrl);
+  try {
+    const { userId } = await auth();
+    
+    // If user is not signed in and trying to access a protected route, redirect to sign-in
+    if (!userId && !isPublicRoute(req)) {
+      const signInUrl = new URL("/sign-in", req.url);
+      return NextResponse.redirect(signInUrl);
+    }
+    
+    // If user is signed in and trying to access sign-in/sign-up, redirect to dashboard
+    if (userId && (req.nextUrl.pathname === "/sign-in" || req.nextUrl.pathname === "/sign-up")) {
+      const dashboardUrl = new URL("/dashboard", req.url);
+      return NextResponse.redirect(dashboardUrl);
+    }
+    
+    // Allow request to continue
+    return NextResponse.next();
+  } catch (error) {
+    // If there's an error, allow the request to continue
+    // This prevents middleware from blocking the entire app
+    console.error("Middleware error:", error);
+    return NextResponse.next();
   }
-  
-  // If user is signed in and trying to access sign-in/sign-up, redirect to dashboard
-  if (userId && (req.nextUrl.pathname === "/sign-in" || req.nextUrl.pathname === "/sign-up")) {
-    const dashboardUrl = new URL("/dashboard", req.url);
-    return NextResponse.redirect(dashboardUrl);
-  }
-  
-  // Allow authenticated users to access home page
-  // (no redirect needed - they can navigate freely)
 });
 
 export const config = {
