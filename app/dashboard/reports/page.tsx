@@ -43,27 +43,27 @@ export default function ReportsPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-8">
+      <div className="mb-8 reveal">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-            <Sparkles className="h-6 w-6 text-purple-600" />
+          <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center glow-emerald">
+            <Sparkles className="h-7 w-7 text-accent" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-gray-900">Clinical Reports</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-5xl font-bold text-foreground">Clinical Reports</h1>
+            <p className="text-muted-foreground mt-1 text-lg">
               Generate AI-powered clinical summaries for your doctor
             </p>
           </div>
         </div>
       </div>
 
-      <Card className="border-2 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
-          <CardTitle className="text-2xl flex items-center gap-2">
-            <FileText className="h-6 w-6" />
+      <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-xl reveal reveal-delay-1">
+        <CardHeader className="bg-gradient-to-r from-accent/10 via-primary/10 to-secondary/10 border-b border-border/50">
+          <CardTitle className="text-2xl flex items-center gap-2 text-foreground">
+            <FileText className="h-6 w-6 text-accent" />
             Generate Clinical Summary
           </CardTitle>
-          <CardDescription className="text-base mt-2">
+          <CardDescription className="text-base mt-2 text-muted-foreground">
             AI will analyze your last 10 symptom logs and create a concise
             medical summary focusing on frequency, severity, and weather
             correlations. Perfect for sharing with your healthcare provider.
@@ -74,7 +74,7 @@ export default function ReportsPage() {
             onClick={generateSummary}
             disabled={loading}
             size="lg"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg py-6"
+            className="w-full bg-gradient-to-r from-accent to-primary text-primary-foreground hover:from-accent/90 hover:to-primary/90 text-lg py-7 glow-emerald transition-all hover-lift"
           >
             {loading ? (
               <>
@@ -92,31 +92,31 @@ export default function ReportsPage() {
       </Card>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
+        <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto bg-card border-border/50">
           <DialogHeader>
-            <DialogTitle className="text-2xl flex items-center gap-2">
-              <FileText className="h-6 w-6 text-purple-600" />
+            <DialogTitle className="text-2xl flex items-center gap-2 text-foreground">
+              <FileText className="h-6 w-6 text-accent" />
               Clinical Summary
             </DialogTitle>
-            <DialogDescription className="text-base">
+            <DialogDescription className="text-base text-muted-foreground">
               Review and copy this summary to share with your healthcare provider
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4">
             {summary && (
               <>
-                <div className="bg-gray-50 border-2 border-gray-200 p-6 rounded-lg mb-4 whitespace-pre-wrap text-sm leading-relaxed">
+                <div className="bg-muted/30 border-2 border-border/50 p-6 rounded-xl mb-4 whitespace-pre-wrap text-sm leading-relaxed text-foreground">
                   {summary}
                 </div>
                 <Button
                   onClick={copyToClipboard}
                   variant="outline"
-                  className="w-full text-lg py-6"
+                  className="w-full text-lg py-6 border-border hover:bg-card hover:border-primary/50 transition-all hover-lift"
                   size="lg"
                 >
                   {copied ? (
                     <>
-                      <Check className="mr-2 h-5 w-5 text-green-600" />
+                      <Check className="mr-2 h-5 w-5 text-secondary" />
                       Copied to Clipboard!
                     </>
                   ) : (

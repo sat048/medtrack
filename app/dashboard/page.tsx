@@ -39,62 +39,68 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-4xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">Track and analyze your symptoms</p>
+      <div className="reveal">
+        <h1 className="text-5xl font-bold text-foreground mb-2">Dashboard</h1>
+        <p className="text-muted-foreground text-lg">Track and analyze your symptoms</p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="border-2 hover:shadow-lg transition-shadow">
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover-lift reveal reveal-delay-1">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Logs
             </CardTitle>
-            <Activity className="h-5 w-5 text-blue-600" />
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Activity className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-blue-600">{totalLogs}</div>
-            <p className="text-xs text-gray-500 mt-1">All time entries</p>
+            <div className="text-5xl font-bold text-gradient-cyan">{totalLogs}</div>
+            <p className="text-xs text-muted-foreground mt-2">All time entries</p>
           </CardContent>
         </Card>
-        <Card className="border-2 hover:shadow-lg transition-shadow">
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover-lift reveal reveal-delay-2">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Average Severity
             </CardTitle>
-            <TrendingUp className="h-5 w-5 text-teal-600" />
+            <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+              <TrendingUp className="h-5 w-5 text-secondary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-teal-600">
+            <div className="text-5xl font-bold text-gradient-emerald">
               {avgSeverity}/10
             </div>
-            <p className="text-xs text-gray-500 mt-1">Last 10 entries</p>
+            <p className="text-xs text-muted-foreground mt-2">Last 10 entries</p>
           </CardContent>
         </Card>
-        <Card className="border-2 hover:shadow-lg transition-shadow">
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover-lift reveal reveal-delay-3">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Recent Activity
             </CardTitle>
-            <Calendar className="h-5 w-5 text-purple-600" />
+            <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+              <Calendar className="h-5 w-5 text-accent" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-foreground">
               {logs.length > 0
                 ? format(new Date(logs[0].createdAt), "MMM d, yyyy")
                 : "No logs yet"}
             </div>
-            <p className="text-xs text-gray-500 mt-1">Last logged</p>
+            <p className="text-xs text-muted-foreground mt-2">Last logged</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Chart */}
-      <Card className="border-2">
+      <Card className="bg-card/50 backdrop-blur-sm border-border/50 reveal reveal-delay-4">
         <CardHeader>
-          <CardTitle className="text-2xl">Severity Over Time</CardTitle>
-          <CardDescription>Track your symptom severity trends</CardDescription>
+          <CardTitle className="text-2xl text-foreground">Severity Over Time</CardTitle>
+          <CardDescription className="text-muted-foreground">Track your symptom severity trends</CardDescription>
         </CardHeader>
         <CardContent>
           <SeverityChart data={chartData} />
@@ -102,10 +108,10 @@ export default async function DashboardPage() {
       </Card>
 
       {/* Recent Logs */}
-      <Card className="border-2">
+      <Card className="bg-card/50 backdrop-blur-sm border-border/50 reveal reveal-delay-5">
         <CardHeader>
-          <CardTitle className="text-2xl">Recent Symptom Logs</CardTitle>
-          <CardDescription>Your latest entries</CardDescription>
+          <CardTitle className="text-2xl text-foreground">Recent Symptom Logs</CardTitle>
+          <CardDescription className="text-muted-foreground">Your latest entries</CardDescription>
         </CardHeader>
         <CardContent>
           <SymptomLogFeed logs={logs} />
