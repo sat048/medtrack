@@ -1,6 +1,6 @@
-# MedTrack Pro - Symptom Intelligence Dashboard
+# [MedTrack Pro - Symptom Intelligence Dashboard](https://medtrack-two.vercel.app/)
 
-A full-stack medical symptom tracking application that automatically correlates symptoms with weather data and generates AI-powered clinical summaries for healthcare providers.
+A full-stack medical symptom tracking application that automatically correlates symptoms with weather data and generates AI-powered clinical summaries for healthcare providers. [Site](https://medtrack-two.vercel.app/) is live and available to users!
 
 ## System Architecture
 
