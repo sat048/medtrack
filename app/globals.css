@@ -2,48 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
-
 @layer base {
   :root {
-    /* Dark Medical Theme - Deep Slate Base */
-    --background: 220 25% 8%;
-    --foreground: 210 20% 95%;
+    /* Distinctive Medical Theme - Deep Teal & Warm Coral */
+    --background: 15 23 30; /* Rich dark slate */
+    --foreground: 241 245 249; /* Soft white */
     
-    /* Cards - Slightly lighter than background */
-    --card: 220 20% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 30 41 59; /* Darker slate */
+    --card-foreground: 241 245 249;
     
-    /* Popover */
-    --popover: 220 20% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 30 41 59;
+    --popover-foreground: 241 245 249;
     
-    /* Primary - Electric Cyan */
-    --primary: 180 100% 50%;
-    --primary-foreground: 220 25% 8%;
+    /* Primary - Vibrant Teal (Medical, Trustworthy) */
+    --primary: 20 184 166; /* #14B8A6 - Teal */
+    --primary-foreground: 15 23 30;
     
-    /* Secondary - Emerald Green */
-    --secondary: 160 70% 45%;
-    --secondary-foreground: 210 20% 95%;
+    /* Secondary - Warm Amber (Vitality, Health) */
+    --secondary: 251 146 60; /* #FB923C - Warm amber */
+    --secondary-foreground: 15 23 30;
     
-    /* Muted - Dark Slate */
-    --muted: 220 15% 18%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 51 65 85; /* Slate 700 */
+    --muted-foreground: 148 163 184; /* Slate 400 */
     
-    /* Accent - Bright Teal */
-    --accent: 175 80% 55%;
-    --accent-foreground: 220 25% 8%;
+    /* Accent - Coral (Energy, Alert) */
+    --accent: 249 115 22; /* #F97316 - Coral */
+    --accent-foreground: 15 23 30;
     
-    /* Destructive - Coral Red */
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 210 20% 95%;
+    --destructive: 239 68 68; /* Red */
+    --destructive-foreground: 241 245 249;
     
-    /* Borders */
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 180 100% 50%;
+    --border: 51 65 85; /* Slate 700 */
+    --input: 51 65 85;
+    --ring: 20 184 166; /* Teal */
     
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -54,110 +47,191 @@
   
   body {
     @apply bg-background text-foreground;
-    font-family: 'Sora', -apple-system, sans-serif;
-    font-feature-settings: 'kern' 1;
+    font-family: 'var(--font-outfit)', -apple-system, sans-serif;
+    font-feature-settings: 'kern' 1, 'liga' 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    line-height: 1.1;
   }
 }
 
 @layer utilities {
-  /* Animated gradient background */
-  .bg-medical-gradient {
-    background: linear-gradient(135deg, 
-      hsl(220 25% 8%) 0%,
-      hsl(220 30% 10%) 25%,
-      hsl(215 25% 9%) 50%,
-      hsl(220 30% 10%) 75%,
-      hsl(220 25% 8%) 100%
-    );
-    background-size: 200% 200%;
-    animation: gradient-shift 15s ease infinite;
+  /* Distinctive Glass Morphism with Medical Theme */
+  .glass {
+    background: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
-  
+
+  .glass-card {
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(20, 184, 166, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  /* Distinctive Gradients - Teal to Coral */
+  .gradient-primary {
+    background: linear-gradient(135deg, #14B8A6 0%, #0D9488 50%, #FB923C 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
   @keyframes gradient-shift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-  
-  /* Subtle pattern overlay */
-  .bg-pattern {
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #14B8A6 0%, #FB923C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Medical Pattern Background */
+  .bg-medical-pattern {
     background-image: 
-      radial-gradient(circle at 1px 1px, hsl(180 100% 50% / 0.03) 1px, transparent 0);
-    background-size: 40px 40px;
+      radial-gradient(circle at 2px 2px, rgba(20, 184, 166, 0.08) 1px, transparent 0),
+      radial-gradient(circle at 18px 18px, rgba(251, 146, 60, 0.06) 1px, transparent 0);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 20px;
   }
-  
-  /* Glow effects */
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(180 100% 50% / 0.3),
-                0 0 40px hsl(180 100% 50% / 0.2),
-                0 0 60px hsl(180 100% 50% / 0.1);
+
+  /* Atmospheric Background with Depth */
+  .bg-atmospheric {
+    background: 
+      radial-gradient(ellipse at top left, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(251, 146, 60, 0.12) 0%, transparent 50%),
+      linear-gradient(180deg, rgb(15, 23, 30) 0%, rgb(30, 41, 59) 100%);
   }
-  
-  .glow-emerald {
-    box-shadow: 0 0 20px hsl(160 70% 45% / 0.3),
-                0 0 40px hsl(160 70% 45% / 0.2);
+
+  /* Enhanced Shadows with Color Tints */
+  .shadow-soft {
+    box-shadow: 
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(20, 184, 166, 0.1);
   }
-  
-  /* Staggered reveal animation */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: reveal 0.6s ease-out forwards;
+
+  .shadow-elevated {
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(20, 184, 166, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
-  
-  @keyframes reveal {
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Enhanced Hover Lift with Glow */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      0 0 24px rgba(20, 184, 166, 0.3),
+      0 0 0 1px rgba(20, 184, 166, 0.3);
+  }
+
+  /* Sophisticated Fade In with Stagger */
+  .fade-in {
+    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+    }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
-  
+
+  /* Staggered Reveal with Scale */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+    animation: revealStagger 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes revealStagger {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
   .reveal-delay-1 { animation-delay: 0.1s; }
   .reveal-delay-2 { animation-delay: 0.2s; }
   .reveal-delay-3 { animation-delay: 0.3s; }
   .reveal-delay-4 { animation-delay: 0.4s; }
   .reveal-delay-5 { animation-delay: 0.5s; }
-  
-  /* Smooth hover lift */
-  .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus Glow with Teal */
+  .focus-glow:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.4);
   }
-  
-  .hover-lift:hover {
-    transform: translateY(-4px);
+
+  /* Pulse Animation for Medical Elements */
+  .pulse-teal {
+    animation: pulseTeal 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  
-  /* Pulse animation for active elements */
-  .pulse-cyan {
-    animation: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  @keyframes pulse-cyan {
+
+  @keyframes pulseTeal {
     0%, 100% {
       opacity: 1;
-      box-shadow: 0 0 0 0 hsl(180 100% 50% / 0.7);
+      box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
     }
     50% {
-      opacity: 0.8;
-      box-shadow: 0 0 0 10px hsl(180 100% 50% / 0);
+      opacity: 0.9;
+      box-shadow: 0 0 0 12px rgba(20, 184, 166, 0);
     }
   }
-  
-  /* Text gradient */
-  .text-gradient-cyan {
-    background: linear-gradient(135deg, hsl(180 100% 50%), hsl(175 80% 55%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+  /* Scale In Animation */
+  .scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
-  
-  .text-gradient-emerald {
-    background: linear-gradient(135deg, hsl(160 70% 45%), hsl(175 80% 55%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

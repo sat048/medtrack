@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
-const sora = Sora({ 
+const outfit = Outfit({ 
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-sora",
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -22,8 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={sora.variable}>
-        <body className="font-sans">{children}</body>
+      <html lang="en" className={outfit.variable}>
+        <body className="font-sans antialiased">{children}</body>
       </html>
     </ClerkProvider>
   );
