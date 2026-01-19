@@ -4,39 +4,70 @@
 
 @layer base {
   :root {
-    /* Distinctive Medical Theme - Deep Teal & Warm Coral */
-    --background: 15 23 30; /* Rich dark slate */
-    --foreground: 241 245 249; /* Soft white */
+    /* Ramp-inspired: Clean, Minimal with Teal/Coral Accents */
+    --background: 255 255 255; /* Pure white */
+    --foreground: 15 23 30; /* Deep charcoal */
     
-    --card: 30 41 59; /* Darker slate */
-    --card-foreground: 241 245 249;
+    --card: 255 255 255;
+    --card-foreground: 15 23 30;
+    
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 30;
+    
+    /* Primary - Vibrant Teal */
+    --primary: 20 184 166; /* #14B8A6 */
+    --primary-foreground: 255 255 255;
+    
+    /* Secondary - Warm Amber */
+    --secondary: 251 146 60; /* #FB923C */
+    --secondary-foreground: 255 255 255;
+    
+    --muted: 248 250 252; /* Slate 50 */
+    --muted-foreground: 100 116 139; /* Slate 500 */
+    
+    /* Accent - Coral */
+    --accent: 249 115 22; /* #F97316 */
+    --accent-foreground: 255 255 255;
+    
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    
+    --border: 226 232 240; /* Slate 200 - very subtle */
+    --input: 226 232 240;
+    --ring: 20 184 166;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode - Deep but clean */
+    --background: 15 23 30;
+    --foreground: 248 250 252;
+    
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
     
     --popover: 30 41 59;
-    --popover-foreground: 241 245 249;
+    --popover-foreground: 248 250 252;
     
-    /* Primary - Vibrant Teal (Medical, Trustworthy) */
-    --primary: 20 184 166; /* #14B8A6 - Teal */
-    --primary-foreground: 15 23 30;
+    --primary: 20 184 166;
+    --primary-foreground: 255 255 255;
     
-    /* Secondary - Warm Amber (Vitality, Health) */
-    --secondary: 251 146 60; /* #FB923C - Warm amber */
-    --secondary-foreground: 15 23 30;
+    --secondary: 251 146 60;
+    --secondary-foreground: 255 255 255;
     
-    --muted: 51 65 85; /* Slate 700 */
-    --muted-foreground: 148 163 184; /* Slate 400 */
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
     
-    /* Accent - Coral (Energy, Alert) */
-    --accent: 249 115 22; /* #F97316 - Coral */
-    --accent-foreground: 15 23 30;
+    --accent: 249 115 22;
+    --accent-foreground: 255 255 255;
     
-    --destructive: 239 68 68; /* Red */
-    --destructive-foreground: 241 245 249;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
     
-    --border: 51 65 85; /* Slate 700 */
+    --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 20 184 166; /* Teal */
-    
-    --radius: 1rem;
+    --ring: 20 184 166;
   }
 }
 
@@ -56,45 +87,47 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.025em;
-    font-weight: 700;
-    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    line-height: 1.2;
   }
 }
 
 @layer utilities {
-  /* Distinctive Glass Morphism with Medical Theme */
+  /* Ramp-style: Clean, minimal glass */
   .glass {
-    background: rgba(30, 41, 59, 0.75);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(20, 184, 166, 0.15);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .dark .glass {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(51, 65, 85, 0.8);
   }
 
   .glass-card {
-    background: rgba(30, 41, 59, 0.85);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1px solid rgba(20, 184, 166, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(226, 232, 240, 0.6);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      0 2px 8px rgba(20, 184, 166, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  /* Distinctive Gradients - Teal to Coral */
+  .dark .glass-card {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Clean Gradients - Ramp style */
   .gradient-primary {
-    background: linear-gradient(135deg, #14B8A6 0%, #0D9488 50%, #FB923C 100%);
-    background-size: 200% 200%;
-    animation: gradient-shift 8s ease infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
   }
 
   .gradient-accent {
@@ -102,92 +135,89 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #14B8A6 0%, #FB923C 100%);
+    background: linear-gradient(135deg, #14B8A6 0%, #0D9488 50%, #FB923C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Medical Pattern Background */
-  .bg-medical-pattern {
-    background-image: 
-      radial-gradient(circle at 2px 2px, rgba(20, 184, 166, 0.08) 1px, transparent 0),
-      radial-gradient(circle at 18px 18px, rgba(251, 146, 60, 0.06) 1px, transparent 0);
-    background-size: 40px 40px, 60px 60px;
-    background-position: 0 0, 20px 20px;
-  }
-
-  /* Atmospheric Background with Depth */
-  .bg-atmospheric {
-    background: 
-      radial-gradient(ellipse at top left, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(251, 146, 60, 0.12) 0%, transparent 50%),
-      linear-gradient(180deg, rgb(15, 23, 30) 0%, rgb(30, 41, 59) 100%);
-  }
-
-  /* Enhanced Shadows with Color Tints */
+  /* Ramp-style: Subtle shadows */
   .shadow-soft {
     box-shadow: 
-      0 4px 24px rgba(0, 0, 0, 0.4),
-      0 2px 8px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(20, 184, 166, 0.1);
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .shadow-soft {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   .shadow-elevated {
     box-shadow: 
-      0 12px 48px rgba(0, 0, 0, 0.5),
-      0 4px 16px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(20, 184, 166, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .shadow-elevated {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.4),
+      0 2px 4px -1px rgba(0, 0, 0, 0.3);
   }
 
   /* Smooth Transitions */
   .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Enhanced Hover Lift with Glow */
+  /* Ramp-style: Subtle hover lift with micro-interactions */
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px) scale(1.01);
+    transform: translateY(-2px);
     box-shadow: 
-      0 12px 48px rgba(0, 0, 0, 0.5),
-      0 4px 16px rgba(0, 0, 0, 0.4),
-      0 0 24px rgba(20, 184, 166, 0.3),
-      0 0 0 1px rgba(20, 184, 166, 0.3);
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
-  /* Sophisticated Fade In with Stagger */
+  .dark .hover-lift:hover {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.4),
+      0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Clean fade in with parallax effect */
   .fade-in {
-    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(24px) scale(0.96);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
   }
 
-  /* Staggered Reveal with Scale */
+  /* Staggered reveal - subtle */
   .reveal {
     opacity: 0;
-    transform: translateY(30px) scale(0.94);
-    animation: revealStagger 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: translateY(20px);
+    animation: revealStagger 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes revealStagger {
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
   }
 
@@ -197,37 +227,21 @@
   .reveal-delay-4 { animation-delay: 0.4s; }
   .reveal-delay-5 { animation-delay: 0.5s; }
 
-  /* Focus Glow with Teal */
+  /* Focus - clean */
   .focus-glow:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.4);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
   }
 
-  /* Pulse Animation for Medical Elements */
-  .pulse-teal {
-    animation: pulseTeal 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  @keyframes pulseTeal {
-    0%, 100% {
-      opacity: 1;
-      box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
-    }
-    50% {
-      opacity: 0.9;
-      box-shadow: 0 0 0 12px rgba(20, 184, 166, 0);
-    }
-  }
-
-  /* Scale In Animation */
+  /* Scale in - subtle */
   .scale-in {
-    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.96);
     }
     to {
       opacity: 1;

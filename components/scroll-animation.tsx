@@ -30,7 +30,7 @@ export function ScrollAnimation({
       },
       {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: "0px 0px -100px 0px",
       }
     )
 
@@ -48,17 +48,17 @@ export function ScrollAnimation({
   const getTransform = () => {
     switch (direction) {
       case "up":
-        return "translateY(30px)"
+        return "translateY(40px)"
       case "down":
-        return "translateY(-30px)"
+        return "translateY(-40px)"
       case "left":
-        return "translateX(30px)"
+        return "translateX(40px)"
       case "right":
-        return "translateX(-30px)"
+        return "translateX(-40px)"
       case "scale":
         return "scale(0.95)"
       default:
-        return "translateY(30px)"
+        return "translateY(40px)"
     }
   }
 
@@ -80,4 +80,3 @@ export function ScrollAnimation({
     </div>
   )
 }
-
